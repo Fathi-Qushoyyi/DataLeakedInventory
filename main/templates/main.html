@@ -22,6 +22,9 @@
                 <td>{{item.name}}</td>
                 <td>{{item.amount}}</td>
                 <td>{{item.description}}</td>
+                <td><a href="sub-amount/{{item.pk}}"><button>Amount -1</button></a></td>
+                <td><a href="add-amount/{{item.pk}}"><button>Amount +1</button></a></td>
+                <td><a href="delete-item/{{item.pk}}"><button>Delete</button></a></td>
             </tr>
         {% endfor %}
     </table>
