@@ -233,6 +233,21 @@ Apabila terjadi error, kita dapat menambahkan value `1` ketika diminta memasukka
 
 Selesai! 
 
+# Pertanyaan Tugas 3
+## Apa itu Django UserCreationForm dan jelaskan apa kelebihan dan kekurangannya?
+`User CreationForm` merupakan sebuah `form` dalam Django yang menggunakan konsep model. `UserCreationForm` mempunyai kemiripan dengan `ModelForm` dalam penggunaannya. Kelebihannya, `UserCreationForm` mempunyai kemudahakan dan kecepatan dalam membuat form. Selain itu, kita tidak perlu membuat model dan bisa langsung menyimpannya ke dalam database. Kelemahannya terletak pada kesulitannya untuk melakukan customisasi. Tetapi, kita masih dapat melakukan customisasi dengan mengubah komponennya secara satu per-satu
+
+## Apa perbedaan authentikasi dan authorisasi dalam konteks DJango, dan mengapa keduanya sangat penting?
+Authentikasi (Authentication) dan Authorisasi (Authorization) adalah dua konsep kunci dalam pengembangan aplikasi web, termasuk dalam framework Django. Authentikasi adalah proses verifikasi identitas pengguna dengan menguji kredensial untuk mencegah akses ilegal ke dalam sistem.Sementara authorisasi mengatur apa yang pengguna dapat lakukan setelah terautentikasi yang berkaitan dengan hak akses/peran yang diberikan kepada pengguna. Hal ini bertujuan untuk mencegah pengguna mengakses/merubah sesuatu yang tidak seharusnya diubah. Keduanya saling melengkapi untuk menjaga keamanan dan integritas sistem. Oleh karena itu, penting untuk membuat sistem keamanan terpadu dan berlapis dengan memanfaatkan kedua hal tersebut. 
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Cookies adalah penyimpanan sementara yang digunakan untuk melacak perubahan, penggunaan, dan akses terhadap sebuah website. Cookies didapatkan dari request server kepada browser untuk menyimpan data, lalu browser akan menyimpan cookie dengan bentuk dictionary/hashmap. Selain itu, disimpan juga domain, path, tanggal expired, ukuran, dan berbagai data lainnya selain data cookies itu sendiri
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Keamanan cookies bergantung terhadap penggunaan oleh client. Hal ini dikarenakan cookies transparan dan dapat dilihat oleh client sehingga tidak disarankan untuk menyimpan data sensitif. Selain itu, cookie juga dapat ditiru dengan mudah sehingga dapat digunakan untuk mengakses website/server. Peniruan cookie tersebut biasa disebut sebagai cookie stealing, yaitu cookie yang ditinggalkan tanpa batas waktu yang jelas dapat membuka potensi risiko jika cookie tersebut dapat diambil alih oleh pihak yang tidak berwenang di masa depan.
+
+
+
 # TUGAS 3
 •	Apa perbedaan antara form post dan form get pada Django?
 Perbedaan antara kedua form tersebut terletak pada beberapa hal, antara lain metode HTTP yang digunakan, keamanan, pembaruan data, dan juga kapasitas data. Ketika kita menggunakan form POST, data di dalam form dikirimkan dalam bentuk HTTP yang tidak terlihat dalam url. Hal ini berguna Ketika kita mengirim data sensitive. Akan tetapi, ketika kita menggunakan form GET, data form disertakan dalam parameter query string. Hal tersebut menyebabkan keamanan form POST jauh lebih aman dibandingkan dengan form GET karena visibilitas dari bentuk HTTP yang tidak terlihat dalam url tadi. Selain itu, kapasitas pengiriman data untuk form POST juga jauh lebih besar daripada form GET yang dikirim melalui url. Dengan menggunakan form POST, kita juga bisa memperbarui atau menyimpan informasi di server, sedangkan form GET hanya bisa melakukan request pembacaan data tanpa bisa memodifikasi data yang ada.
