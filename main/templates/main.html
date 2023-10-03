@@ -1,49 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Data Leaked Store</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-family: 'Mandali', sans-serif; color: green; font-weight: bold;">Data Leaked Store</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>amount</th>
-            <th>Description</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
-        {% for item in items %}
-            <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.description}}</td>
-                <td><a href="sub-amount/{{item.pk}}"><button>Amount -1</button></a></td>
-                <td><a href="add-amount/{{item.pk}}"><button>Amount +1</button></a></td>
-                <td><a href="delete-item/{{item.pk}}"><button>Delete</button></a></td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="container mt-5" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+        <h1 style="color: #22b44b;">Data Leaked Store</h1>
 
-    <br />
+        <h5 style="color: #333;">Name:</h5>
+        <p>{{name}}</p>
 
-    <a href="{% url 'main:create_item' %}">
-        <button>
+        <h5 style="color: #333;">Class:</h5>
+        <p>{{class}}</p>
+        <div class="row">
+            {% for item in items %}
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="background-color: #fff; border: 1px solid #ccc; border-radius: 10px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">Amount: {{item.amount}}</p>
+                            <p class="card-text">{{item.description}}</p>
+                            <a href="sub-amount/{{item.pk}}" class="btn btn-danger">Amount -1</a>
+                            <a href="add-amount/{{item.pk}}" class="btn btn-success">Amount +1</a>
+                            <a href="delete-item/{{item.pk}}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'main:edit_item' item.pk %}" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'main:create_item' %}" class="btn btn-primary">
             Add New Item
-        </button>
-    </a>
+        </a>
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+        <h5 class="mt-5" style="color: #333;">Sesi terakhir login: {{ last_login }}</h5>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
+        <a href="{% url 'main:logout' %}" class="btn btn-warning">
             Logout
-        </button>
-    </a>
-
+        </a>
+    </div>
 {% endblock content %}
-

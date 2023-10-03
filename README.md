@@ -3,6 +3,157 @@ PBP C
 README.md (Tugas 2 dan Tugas 3)
 Tautan Deployment Adaptable	: https://pbp-inventory-list.adaptable.app/
 
+
+#Tugas 5
+## Langkah 0: Setting Bootstrap CSS JS
+Menambahkan kode Boostrap CSS dan JS, serta setting base.html agar menyesuaikan perilaku perangkat
+```html
+<head>
+    {% block meta %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+</head>
+```
+<head>
+    {% block meta %}
+    ....
+    {% endblock meta %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+</head>
+``````
+
+## Menambahkan navbar
+```html
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-family: 'Mandali', sans-serif; color: green; font-weight: bold;">Data Leaked Store</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+```
+
+## Menambahkan fitur edit dan menambahkan berkas html
+Saya menambahkan fungsi edit_item pada views.py
+```python
+def edit_product(request, id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+```
+Setelah itu saya membuat berkas edit_item.html agar mengarahkan ke halaman edit_item
+
+## Mempercantik Tampilan
+
+## Langkah 1: Tampilan Halaman Login
+File: login.html
+    Formulir login diposisikan di tengah halaman secara horizontal dan vertikal.
+    Input field untuk username dan password memiliki border-radius dan padding untuk tampilan yang lebih baik.
+    Tombol login memiliki latar belakang warna hijau dan berubah warna saat di-hover.
+    Pesan validasi ditambahkan untuk memberi tahu pengguna tentang kesalahan input.
+
+## Langkah 2: Tampilan Halaman Register   
+    File: register.html
+    Tampilan halaman registrasi juga telah dimodifikasi mirip dengan halaman login.
+    Formulir registrasi diposisikan di tengah halaman secara horizontal dan vertikal.
+    Input field untuk username, email, dan password memiliki border-radius dan padding untuk tampilan yang lebih baik.
+    Tombol register memiliki latar belakang warna hijau dan berubah warna saat di-hover.
+    Pesan validasi ditambahkan untuk memberi tahu pengguna tentang kesalahan input.
+
+## Langkah 3: Tampilan Halaman Add New Item
+File: add_item.html
+
+    Halaman "Add New Item" memiliki struktur yang mirip dengan halaman login dan registrasi.
+    Input field untuk nama, jumlah (amount), dan deskripsi dipisahkan ke dalam kolom terpisah menggunakan grid system Bootstrap.
+    Input field memiliki pesan validasi yang ditampilkan jika input tidak valid.
+    Tombol "Add Item" memiliki latar belakang warna hijau dan berubah warna saat di-hover.
+
+## Langkah 4: Tampilan Halaman Edit Item
+File: edit_item.html
+
+Halaman "Edit Item" memiliki tata letak yang serupa dengan halaman "Add New Item".
+Input field untuk nama, jumlah (amount), dan deskripsi dipisahkan ke dalam kolom terpisah menggunakan grid system Bootstrap.
+Input field memiliki pesan validasi yang ditampilkan jika input tidak valid.
+Tombol "Edit Item" memiliki latar belakang warna biru dan berubah warna saat di-hover.
+
+## Pertanyaan Tugas 5
+1. Selector pada CSS digunakan untuk menerapkan gaya (styling) ke elemen HTML. Beberapa jenis selector yang umum digunakan meliputi:
+    1. ID Selector: Menggunakan atribut "id" untuk memilih elemen HTML tertentu.
+    ```css
+    p {
+    color: red;
+    }
+    ```
+    Artinya, semua elemen <p> akan memiliki warna teks merah
+    2. Element Selector: Menggunakan nama elemen untuk memilih elemen HTML tertentu.
+    ```css
+    #header {
+    background-color: blue;
+    }
+    ```
+    Artinya, elemen dengan atribut id="header" akan memiliki latar belakang merah
+    3. Class Selector: Menggunakan atribut "class" untuk memilih elemen HTML tertentu.
+    ```css
+    .btn-primary {
+    background-color: red;
+    }
+    ```
+    Artinya, elemen dengan atribut class="btn-primary" akan memiliki latar belakang merah.
+2. Jelaskan HTML5 Tag yang kamu ketahui
+
+<a>: Membuat tautan (link) ke halaman web lain atau ke berkas lainnya.
+
+<canvas>: Memungkinkan gambar dan grafis interaktif dihasilkan dengan menggunakan JavaScript.
+
+<section>: Menandai bagian logis atau kelompok konten di dalam halaman web.
+
+<video>: Menyematkan video ke halaman web, memungkinkan pengguna untuk menonton video langsung di browser.
+
+<nav>: Menandai bagian dari halaman web yang berisi tautan navigasi, seperti menu.
+
+3. Jelaskan perbedaan antara margin dan padding.
+Margin adalah ruang di luar batas elemen HTML. Fungsinya adalah mengontrol jarak antara elemen dengan elemen lain di sekitarnya atau elemen dengan batas area induknya. Pengaturan nilai margin dapat dilakukan dalam piksel, persen, atau proporsi lainnya. Pengaruh margin adalah pada tata letak keseluruhan halaman, karena menentukan seberapa jauh elemen tersebut dari elemen lainnya. Sebagai contoh, dengan mengatur margin, elemen dapat dipindahkan ke posisi tertentu di halaman web, menjauh atau mendekat dari elemen-elemen lainnya.
+
+Padding, di sisi lain, adalah ruang di dalam batas elemen HTML, di antara batas elemen dan kontennya sendiri. Fungsinya adalah mengontrol jarak antara konten elemen dan batasnya. Pengaturan nilai padding juga bisa dilakukan dalam piksel, persen, atau proporsi lainnya. Padding hanya mempengaruhi ruang di dalam elemen itu sendiri, tidak mempengaruhi elemen lain di sekitarnya. Sebagai contoh, padding digunakan untuk menjaga konten elemen tetap berjarak dari batas elemennya, menciptakan ruang di sekitar konten tersebut.
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+Bootstrap:
+- Menyediakan komponen UI dan gaya pra-dibuat untuk membangun situs web - dengan cepat.
+- Mengandalkan kelas CSS yang telah ditentukan sebelumnya, memungkinkan pembangunan cepat dan konsistensi antarmuka.
+- Cocok untuk proyek-proyek dengan tata letak standar yang memerlukan pembangunan cepat.
+
+Tailwind CSS:
+- Menggunakan pendekatan "utility-first", menyediakan kelas-kelas CSS kecil yang dapat digunakan langsung di HTML.
+- Memberikan fleksibilitas tinggi dan memungkinkan pembangunan antarmuka yang sangat kustom.
+- Cocok untuk proyek-proyek yang memerlukan desain yang sangat variatif atau memerlukan penyesuaian tingkat tinggi, meskipun memerlukan pemahaman CSS yang lebih dalam.
+
+Kapan Menggunakan:
+
+Bootstrap: Cocok untuk proyek-proyek dengan tata letak standar yang memerlukan pembangunan cepat dan konsistensi antarmuka.
+Tailwind CSS: Ideal untuk proyek-proyek dengan desain yang variatif atau memerlukan penyesuaian tingkat tinggi, dan bagi pengembang yang ingin kendali yang lebih besar atas desainnya.
+
+
+
 #Tugas 4
 ## 1. Membuat Form Registrasi
 Pertama-tama kita dapat membuat form registrasi dengan membuat fungsi register seperti kode berikut. Fungsi register ini dapat dibuat pada folder `views.py` pada subdirektori main
