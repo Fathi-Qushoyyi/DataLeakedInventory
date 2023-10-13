@@ -3,6 +3,20 @@ PBP C
 README.md (Tugas 2 dan Tugas 3)
 Tautan Deployment Adaptable	: https://pbp-inventory-list.adaptable.app/
 
+# Tugas 6
+1. Perbedaan antara asynchronous programming dan synchronous programming terletak pada cara eksekusi program dilakukan. Synchronous programming menjalankan program secara berurutan, sementara asynchronous programming memungkinkan eksekusi program secara bersamaan. Asynchronous programming berguna ketika ada bottleneck pada jaringan atau disk, karena memungkinkan program untuk menjalankan tugas lain tanpa harus menunggu data yang diinginkan tersedia.
+
+2. Paradigma event-driven programming adalah konsep di mana tindakan (event) tertentu memicu respons atau tindakan lain dalam program. Sebagai contoh, saat tombol ditekan, event-driven programming memungkinkan pemanggilan fungsi tertentu untuk merespons tindakan tersebut.
+
+3. Dalam penerapan asynchronous programming pada AJAX, kita dapat menggunakan Fetch API. Contohnya adalah dengan menggunakan fungsi fetch(), yang melakukan permintaan HTTP, dan kemudian menggunakan .then() untuk menangani data yang diterima setelah permintaan selesai.
+
+4. Dalam perbandingan antara Fetch API dan jQuery, Fetch API dianggap lebih baik karena lebih kuat, fleksibel, dan cepat. Selain itu, Fetch API merupakan antarmuka modern tanpa perlu mengimpor library tambahan seperti jQuery. Meskipun demikian, Fetch API memerlukan beberapa konfigurasi tambahan, seperti pengelolaan cookie. Dalam pandangan saya, fetch() lebih unggul dibandingkan jQuery.
+
+5.  Butlah fungsi get_item_json untuk mengambil item berdasarkan pengguna yang sudah login. Lalu, tambahkan fungsi asinkron getItem di dalam blok <sript> pada file main.html menggunakan Fetch API untuk mengambil data JSON dari endpoint get_item_json di views.py.
+
+Untuk AJAX POST, buatlah tombol yang membuka modal dengan formulir untuk menambahkan item baru. Sertakan fungsi view baru bernama add_item_ajax di views.py untuk menangani penambahan item baru dengan aman. Arahkan fungsi ini ke /create-ajax/ di urls.py. Pastikan formulir pada modal terhubung ke rute ini. Ketika pengguna menekan "Tambah Item", buatlah fungsi addItem yang menggunakan metode POST untuk mengambil data dari fungsi add_item di views.py. Setelah mendapatkan data, gunakan fungsi refreshItem untuk memperbarui daftar item pada kartu tanpa harus me-reload halaman utuh.
+
+Terakhir, pastikan untuk menjalankan perintah python manage.py collectstatic di direktori utama proyek untuk mengumpulkan semua file statis dari berbagai aplikasi ke dalam satu folder, mempermudah penyajian di lingkungan produksi.
 
 # Tugas 5
 ## Langkah 0: Setting Bootstrap CSS JS
