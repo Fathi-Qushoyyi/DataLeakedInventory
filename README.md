@@ -1,7 +1,7 @@
 Fathi Qushoyyi Ahimsa (NPM 2206082120) 
 PBP C
 README.md (Tugas 2 dan Tugas 3)
-Tautan Deployment Adaptable	: https://pbp-inventory-list.adaptable.app/
+Tautan Deployment Adaptable	: test
 
 # Tugas 6
 1. Perbedaan antara asynchronous programming dan synchronous programming terletak pada cara eksekusi program dilakukan. Synchronous programming menjalankan program secara berurutan, sementara asynchronous programming memungkinkan eksekusi program secara bersamaan. Asynchronous programming berguna ketika ada bottleneck pada jaringan atau disk, karena memungkinkan program untuk menjalankan tugas lain tanpa harus menunggu data yang diinginkan tersedia.

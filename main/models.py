@@ -7,3 +7,8 @@ class Item(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
+class Employee(models.Model):
+    #one to one field
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
