@@ -23,4 +23,5 @@ urlpatterns = [
     path('edit-item/<int:id>', edit_item, name='edit_item'),
     path('get-item/', get_item_json, name='get_item_json'),
     path('create-item-ajax/', add_item_ajax, name='add_item_ajax'),
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
 ]
